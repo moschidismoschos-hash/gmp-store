@@ -1,111 +1,100 @@
 <!doctype html>
-<html lang="el">
+<html lang="el" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#08131c">
-  <meta name="description" content="GMP Store — δοκιμαστική προεπισκόπηση παγκόσμιου ηλεκτρονικού καταστήματος.">
-  <title>GMP Store — Παγκόσμιες αγορές</title>
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <meta name="theme-color" content="#07121b">
+  <meta name="description" content="GMP Store — διεθνές ηλεκτρονικό κατάστημα υπό κατασκευή.">
+  <title>GMP Store | Παγκόσμιες αγορές</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <script src="translations.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
-  <div class="demo-strip"><span class="demo-dot"></span><span data-i18n="demoStrip">ΔΟΚΙΜΑΣΤΙΚΗ ΕΚΔΟΣΗ · Χωρίς πραγματικές αγορές ή χρεώσεις</span></div>
-  <header class="site-header">
-    <div class="header-primary shell">
-      <a href="#top" class="brand" aria-label="GMP Store - αρχική">
-        <span class="brand-emblem" aria-hidden="true">◎</span>
-        <span class="brand-copy"><strong>GMP<span> STORE</span></strong><small>GLOBAL MARKET PLACE</small></span>
-      </a>
-      <form class="site-search" id="searchForm" role="search">
-        <label class="sr-only" for="searchInput" data-i18n="searchLabel">Αναζήτηση προϊόντων</label>
-        <input type="search" id="searchInput" autocomplete="off" data-placeholder="searchPlaceholder" placeholder="Αναζήτηση προϊόντων, κατηγοριών...">
-        <button type="submit" aria-label="Αναζήτηση"><svg class="ico"><use href="#i-search"/></svg></button>
-      </form>
-      <div class="header-tools">
-        <label class="language-control"><span class="sr-only" data-i18n="language">Γλώσσα</span><select id="languageSelect" aria-label="Γλώσσα"><option value="el">Ελληνικά</option><option value="en">English</option></select></label>
-        <button class="icon-action" id="favoritesButton" aria-label="Αγαπημένα" title="Αγαπημένα"><svg class="ico"><use href="#i-heart"/></svg><span id="favoritesCount" class="counter">0</span></button>
-        <button class="icon-action" id="cartButton" aria-label="Καλάθι" title="Καλάθι"><svg class="ico"><use href="#i-cart"/></svg><span id="cartCount" class="counter">0</span></button>
-      </div>
+<svg aria-hidden="true" class="svg-defs" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-world" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-3.2 3.4-3.2 14.6 0 18M12 3c3.2 3.4 3.2 14.6 0 18M5.7 6.2h12.6M5.7 17.8h12.6"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/><path d="M2 3h2l3 13h13l2-9H5"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 5.2a5.3 5.3 0 0 0-7.5 0L12 6.5l-1.3-1.3a5.3 5.3 0 0 0-7.5 7.5L12 21l8.8-8.3a5.3 5.3 0 0 0 0-7.5z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5 11-11"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 9 4v6c0 6-4 9-9 10-5-1-9-4-9-10V6z"/><path d="m8 12 3 3 5-5"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-location" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+</svg>
+<div id="app">
+  <div class="demo-bar"><span class="status-led"></span><span data-t="demo">ΔΟΚΙΜΑΣΤΙΚΟ ΚΑΤΑΣΤΗΜΑ · ΧΩΡΙΣ ΠΛΗΡΩΜΕΣ</span></div>
+  <header class="masthead">
+    <button type="button" class="brand" data-view="home" aria-label="GMP Store">
+      <span class="brand-mark"><svg class="ico"><use href="#i-world"/></svg></span>
+      <span class="brand-name"><strong>GMP <em>STORE</em></strong><small>GLOBAL MARKET PLACE</small></span>
+    </button>
+    <div class="header-actions">
+      <label class="sr-only" for="language" data-t="language">Γλώσσα</label>
+      <select id="language" aria-label="Language"><option value="el">Ελληνικά</option><option value="en">English</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="es">Español</option><option value="it">Italiano</option><option value="pt">Português</option><option value="nl">Nederlands</option><option value="ja">日本語</option><option value="ar">العربية</option></select>
+      <button type="button" id="favorites" class="icon-button" aria-label="Αγαπημένα"><svg class="ico"><use href="#i-heart"/></svg><span id="fav-count" class="mini-counter" hidden>0</span></button>
     </div>
-    <div class="mobile-search shell">
-      <form id="mobileSearchForm" role="search">
-        <input type="search" id="mobileSearchInput" data-placeholder="searchPlaceholder" placeholder="Αναζήτηση προϊόντων..." aria-label="Αναζήτηση προϊόντων">
-        <button type="submit" aria-label="Αναζήτηση"><svg class="ico"><use href="#i-search"/></svg></button>
-      </form>
-    </div>
-    <nav class="category-nav shell" id="navCategories" aria-label="Κατηγορίες προϊόντων"><!-- JS --></nav>
   </header>
-
+  <form class="search-row" id="search-form" role="search">
+    <svg class="ico"><use href="#i-search"/></svg>
+    <label class="sr-only" for="query" data-t="search">Αναζήτηση</label>
+    <input id="query" type="search" enterkeyhint="search" autocomplete="off" placeholder="Αναζήτηση στον κατάλογο..." maxlength="80">
+    <button class="search-go" type="submit" aria-label="Αναζήτηση"><svg class="ico"><use href="#i-arrow"/></svg></button>
+  </form>
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="heroTitle">
-      <div class="hero-glow"></div><img class="hero-globe" src="assets/hero/globe.webp" alt="Καλλιτεχνική απεικόνιση της Γης με διαδρομές μεταφορών">
-      <div class="hero-content shell">
-        <div class="hero-copy">
-          <div class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="heroOverline">ΕΝΑ ΝΕΟ ΚΟΣΜΟ ΑΓΟΡΩΝ</span></div>
-          <h1 id="heroTitle" data-i18n-html="heroTitle">Ό,τι χρειάζεσαι.<br><em>Από όλο τον κόσμο.</em></h1>
-          <p data-i18n="heroBody">Έξυπνες επιλογές για το σπίτι, την τεχνολογία και την καθημερινότητα. Ένα κατάστημα σχεδιασμένο για όλους.</p>
-          <div class="hero-buttons"><a class="btn btn-gold" href="#products"><span data-i18n="browseButton">Ανακάλυψε τα προϊόντα</span><svg class="ico"><use href="#i-arrow"/></svg></a><a class="btn btn-outline" href="#assistant"><svg class="ico"><use href="#i-sparkle"/></svg><span data-i18n="assistantButton">Βοηθός αγορών</span></a></div>
-          <div class="hero-pillars"><span><svg class="ico"><use href="#i-globe"/></svg><span data-i18n="heroPillarOne">Διεθνής προσανατολισμός</span></span><span><svg class="ico"><use href="#i-shield"/></svg><span data-i18n="heroPillarTwo">Διαφανής ενημέρωση</span></span></div>
+    <section class="view home-view active" id="view-home" aria-label="Αρχική">
+      <div class="hero">
+        <img class="hero-globe" src="assets/hero/globe.webp" alt="" aria-hidden="true">
+        <div class="hero-fade"></div>
+        <div class="hero-content">
+          <span class="eyebrow"><span class="eyebrow-dash"></span><span data-t="heroKicker">Η ΔΙΚΗ ΣΟΥ ΠΑΓΚΟΣΜΙΑ ΑΓΟΡΑ</span></span>
+          <h1><span data-t="heroFirst">Ό,τι χρειάζεσαι.</span><strong data-t="heroSecond">Από όλο τον κόσμο.</strong></h1>
+          <p data-t="heroText">Προϊόντα επιλεγμένα με φροντίδα. Ανακάλυψε τον κόσμο του GMP Store.</p>
+          <button class="gold-button" data-view="products"><span data-t="explore">Εξερεύνησε</span><svg class="ico"><use href="#i-arrow"/></svg></button>
         </div>
-        <div class="hero-floating"><svg class="ico"><use href="#i-globe"/></svg><div><strong data-i18n="floatingTitle">Ένας κόσμος επιλογών</strong><span data-i18n="floatingBody">Το δικό μας παγκόσμιο κατάστημα</span></div></div>
+        <span class="hero-stamp"><svg class="ico"><use href="#i-world"/></svg><span data-t="globalVision">Παγκόσμια προοπτική</span></span>
       </div>
-      <div class="hero-bottomline"></div>
-    </section>
-
-    <section class="perks shell" aria-label="Χαρακτηριστικά καταστήματος">
-      <div class="perk"><svg class="ico"><use href="#i-gem"/></svg><span><strong data-i18n="perk1Title">Επιλεγμένα προϊόντα</strong><small data-i18n="perk1Body">Αρχικός δοκιμαστικός κατάλογος</small></span></div>
-      <div class="perk"><svg class="ico"><use href="#i-globe"/></svg><span><strong data-i18n="perk2Title">Διεθνής σχεδιασμός</strong><small data-i18n="perk2Body">Με προοπτική επέκτασης</small></span></div>
-      <div class="perk"><svg class="ico"><use href="#i-package"/></svg><span><strong data-i18n="perk3Title">Χωρίς δική μας αποθήκη</strong><small data-i18n="perk3Body">Μελλοντική σύνδεση προμηθευτών</small></span></div>
-      <div class="perk"><svg class="ico"><use href="#i-lock"/></svg><span><strong data-i18n="perk4Title">Ασφαλής δοκιμή</strong><small data-i18n="perk4Body">Δεν πραγματοποιούνται χρεώσεις</small></span></div>
-    </section>
-
-    <section class="section shell" id="categories">
-      <div class="section-heading"><div><span class="section-overline" data-i18n="categoriesOverline">ΕΞΕΡΕΥΝΗΣΕ</span><h2 data-i18n="categoriesTitle">Κατηγορίες για κάθε ανάγκη</h2></div><p class="muted" data-i18n="categoriesBody">Βρες γρήγορα αυτό που σε ενδιαφέρει.</p></div>
-      <div id="categoryGrid" class="category-grid"></div>
-    </section>
-
-    <section class="discovery-band shell" aria-label="Επιλεγμένες ενότητες">
-      <a href="#products" class="editorial editorial-home" data-category="home"><div><span data-i18n="editorialOverline1">ΑΝΑΚΑΛΥΨΕ</span><h3 data-i18n-html="editorialTitle1">Έξυπνες λύσεις<br>για το σπίτι</h3><span class="editorial-link" data-i18n="editorialCta">Δες τη συλλογή →</span></div><img src="assets/categories/home.webp" alt="Καθιστικό με σύγχρονη διακόσμηση" loading="lazy"></a>
-      <a href="#products" class="editorial editorial-tech" data-category="technology"><div><span data-i18n="editorialOverline2">ΤΕΧΝΟΛΟΓΙΑ</span><h3 data-i18n-html="editorialTitle2">Μικρές συσκευές.<br>Μεγάλες ιδέες.</h3><span class="editorial-link" data-i18n="editorialCta">Δες τη συλλογή →</span></div><img src="assets/categories/technology.webp" alt="Ακουστικά και υπολογιστής" loading="lazy"></a>
-    </section>
-
-    <section class="section shell" id="products">
-      <div class="section-heading product-heading"><div><span class="section-overline" data-i18n="productsOverline">Η ΣΥΛΛΟΓΗ ΜΑΣ</span><h2 data-i18n="productsTitle">Προτεινόμενα προϊόντα</h2><p class="muted" data-i18n="priceNotice">Τα προϊόντα και οι τιμές είναι ενδεικτικά για την προεπισκόπηση.</p></div><div class="product-controls"><label class="sr-only" for="sortSelect" data-i18n="sortLabel">Ταξινόμηση</label><select id="sortSelect"><option value="featured" data-i18n="sortFeatured">Προτεινόμενα</option><option value="low" data-i18n="sortLow">Τιμή: χαμηλή πρώτα</option><option value="high" data-i18n="sortHigh">Τιμή: υψηλή πρώτα</option></select></div></div>
-      <div class="filter-pills" id="filterPills"></div>
-      <div id="productGrid" class="product-grid"></div>
-      <p class="empty-results" id="emptyResults" hidden data-i18n="noResults">Δεν βρέθηκαν προϊόντα. Δοκίμασε άλλη αναζήτηση.</p>
-    </section>
-
-    <section class="smart-section" id="assistant">
-      <div class="shell smart-layout">
-        <div class="smart-intro"><span class="section-overline" data-i18n="smartOverline">GMP SMART FIND</span><h2 data-i18n-html="smartTitle">Δεν ξέρεις τι να επιλέξεις;<br><em>Πες μας τι χρειάζεσαι.</em></h2><p data-i18n="smartBody">Γράψε τι ψάχνεις ή το ποσό που θέλεις να διαθέσεις. Ο δοκιμαστικός βοηθός θα προτείνει προϊόντα από τον κατάλογο.</p><div class="smart-star">✦</div></div>
-        <div class="smart-panel"><div class="smart-panel-top"><span class="assistant-avatar">✦</span><span><strong data-i18n="assistantPanelTitle">Βοηθός GMP</strong><small data-i18n="assistantPanelStatus">Δοκιμαστικός · χωρίς τεχνητή νοημοσύνη</small></span></div><p id="assistantReply" class="assistant-reply" aria-live="polite" data-i18n="assistantGreeting">Γεια σου! Δοκίμασε: «δώρο μέχρι 50 ευρώ», «κάτι για το σπίτι» ή «ακουστικά».</p><form id="assistantForm" class="assistant-form"><label for="assistantInput" class="sr-only" data-i18n="assistantLabel">Τι ψάχνεις;</label><input id="assistantInput" data-placeholder="assistantPlaceholder" placeholder="Τι χρειάζεσαι σήμερα;" required maxlength="140"><button type="submit" aria-label="Αποστολή"><svg class="ico"><use href="#i-arrow"/></svg></button></form><div class="assistant-chips"><button type="button" data-query-el="δώρο έως 50" data-query-en="gift under 50" data-i18n="chip1">Δώρο έως 50 €</button><button type="button" data-query-el="σπίτι" data-query-en="home" data-i18n="chip2">Για το σπίτι</button><button type="button" data-query-el="τεχνολογία" data-query-en="technology" data-i18n="chip3">Τεχνολογία</button></div></div>
+      <div class="home-lower">
+        <div class="section-title"><div><span class="tiny-gold" data-t="discover">ΑΝΑΚΑΛΥΨΕ</span><h2 data-t="browseCategories">Κατηγορίες</h2></div><button type="button" class="text-link" data-view="products"><span data-t="seeAll">Δες όλες</span><svg class="ico"><use href="#i-arrow"/></svg></button></div>
+        <div class="category-mosaic" id="home-categories"></div>
+        <div class="trust-strip"><span><svg class="ico"><use href="#i-shield"/></svg><span data-t="controlled">Μόνο επιλεγμένα προϊόντα</span></span><span><svg class="ico"><use href="#i-box"/></svg><span data-t="direct">Χωρίς δική μας αποθήκη</span></span></div>
       </div>
     </section>
-
-    <section class="section shell" id="global"><div class="section-heading"><div><span class="section-overline" data-i18n="globalOverline">ΧΩΡΙΣ ΣΥΝΟΡΑ</span><h2 data-i18n="globalTitle">Ο κόσμος είναι η αγορά μας</h2></div></div><div class="global-card"><div><h3 data-i18n="globalCardTitle">Επιλογή χώρας</h3><p data-i18n="globalBody">Αυτή είναι δοκιμαστική προεπισκόπηση. Η διαθεσιμότητα, οι χρόνοι παράδοσης και τα μεταφορικά θα εμφανίζονται όταν συνδεθούν πραγματικοί προμηθευτές.</p><label for="countrySelect" data-i18n="countryLabel">Χώρα παράδοσης</label><select id="countrySelect"><option value="GR">Ελλάδα</option><option value="DE">Γερμανία</option><option value="FR">Γαλλία</option><option value="GB">Ηνωμένο Βασίλειο</option><option value="US">Ηνωμένες Πολιτείες</option></select><p class="country-feedback" id="countryFeedback" aria-live="polite"></p></div><div class="global-graphic"><svg viewBox="0 0 280 280" role="img" aria-label="Σχεδιαστική υδρόγειος"><circle cx="140" cy="140" r="102" fill="none" stroke="#d7a948" stroke-width="1.4"/><ellipse cx="140" cy="140" rx="49" ry="102" fill="none" stroke="#d7a948" stroke-width="1.2"/><ellipse cx="140" cy="140" rx="84" ry="102" fill="none" stroke="#d7a948" stroke-opacity=".48"/><path d="M38 140h204M57 81c50 25 116 25 166 0M57 199c50-25 116-25 166 0" fill="none" stroke="#d7a948" stroke-width="1.3"/><circle cx="140" cy="140" r="7" fill="#f0c46b"/><circle cx="195" cy="72" r="4" fill="#f0c46b"/><circle cx="83" cy="180" r="4" fill="#f0c46b"/></svg></div></div></section>
-
-
-    <section class="roadmap shell" id="next-features">
-      <div class="section-heading"><div><span class="section-overline" data-i18n="roadmapOverline">ΣΤΑ ΕΠΟΜΕΝΑ ΒΗΜΑΤΑ</span><h2 data-i18n="roadmapTitle">Όσα ετοιμάζουμε για σένα</h2></div></div>
-      <div class="roadmap-grid">
-        <article><div class="roadmap-symbol">✦</div><strong data-i18n="roadmap1Title">Πραγματικές προσφορές</strong><p data-i18n="roadmap1Body">Μετά τον έλεγχο τιμών και προμηθευτών.</p><span class="roadmap-status" data-i18n="roadmapStatus">Σε σχεδιασμό</span></article>
-        <article><div class="roadmap-symbol">▶</div><strong data-i18n="roadmap2Title">Βίντεο προϊόντων</strong><p data-i18n="roadmap2Body">Με αληθινές παρουσιάσεις και χρήσιμες λεπτομέρειες.</p><span class="roadmap-status" data-i18n="roadmapStatus">Σε σχεδιασμό</span></article>
-        <article><div class="roadmap-symbol">◇</div><strong data-i18n="roadmap3Title">Λέσχη μελών</strong><p data-i18n="roadmap3Body">Πρόγραμμα επιβράβευσης με ξεκάθαρους κανόνες.</p><span class="roadmap-status" data-i18n="roadmapStatus">Σε σχεδιασμό</span></article>
-      </div>
+    <section class="view panel-view" id="view-products" aria-label="Προϊόντα" hidden>
+      <div class="panel-head"><div><span class="tiny-gold" data-t="catalogKicker">Ο ΚΑΤΑΛΟΓΟΣ ΜΑΣ</span><h2 data-t="products">Προϊόντα</h2></div><span class="count-label" id="product-count">0</span></div>
+      <div class="catalog-tools"><label class="sr-only" for="category" data-t="category">Κατηγορία</label><select id="category"></select><label class="sr-only" for="sort" data-t="sort">Ταξινόμηση</label><select id="sort"><option value="featured" data-t="sortNew">Νεότερα</option><option value="low" data-t="sortLow">Φθηνότερα</option><option value="high" data-t="sortHigh">Ακριβότερα</option></select></div>
+      <div id="product-grid" class="product-grid"></div>
+      <div class="pager"><button type="button" id="page-prev" aria-label="Προηγούμενη σελίδα"><svg class="ico"><use href="#i-left"/></svg></button><span id="page-count">0 / 0</span><button type="button" id="page-next" aria-label="Επόμενη σελίδα"><svg class="ico"><use href="#i-right"/></svg></button></div>
     </section>
-
-    <section class="trust shell"><div class="trust-header"><span class="section-overline" data-i18n="trustOverline">ΧΤΙΖΟΥΜΕ ΕΜΠΙΣΤΟΣΥΝΗ</span><h2 data-i18n="trustTitle">Διαφάνεια σε κάθε βήμα</h2></div><div class="trust-grid"><div><svg class="ico"><use href="#i-check"/></svg><strong data-i18n="trust1">Προμηθευτές υπό αξιολόγηση</strong></div><div><svg class="ico"><use href="#i-package"/></svg><strong data-i18n="trust2">Αποστολές σε σχεδιασμό</strong></div><div><svg class="ico"><use href="#i-heart"/></svg><strong data-i18n="trust3">Αγαπημένα και καλάθι επίδειξης</strong></div><div><svg class="ico"><use href="#i-lock"/></svg><strong data-i18n="trust4">Καμία συλλογή στοιχείων πληρωμής</strong></div></div></section>
+    <section class="view panel-view" id="view-assistant" aria-label="Βοηθός" hidden>
+      <div class="panel-head"><div><span class="tiny-gold" data-t="assistantKicker">GMP SMART FIND</span><h2 data-t="assistant">Βοηθός αγορών</h2></div><span class="star-icon">✦</span></div>
+      <div class="assistant-card"><span class="assistant-bubble-icon">✦</span><h3 data-t="assistantTitle">Πες μου τι αναζητάς</h3><p data-t="assistantText">Θα αναζητήσω αποκλειστικά στα προϊόντα που έχουν δημοσιευτεί εδώ.</p><div class="assistant-reply" id="assistant-reply" aria-live="polite"></div><form id="assistant-form" class="assistant-form"><input id="assistant-query" maxlength="100" data-placeholder="assistantPlaceholder" placeholder="Π.χ. κάτι για το σπίτι..." required><button type="submit" aria-label="Αποστολή"><svg class="ico"><use href="#i-arrow"/></svg></button></form><small data-t="assistantDisclaimer">Δοκιμαστική αναζήτηση · Δεν είναι ακόμη τεχνητή νοημοσύνη.</small></div>
+    </section>
+    <section class="view panel-view" id="view-world" aria-label="Χώρες" hidden>
+      <div class="panel-head"><div><span class="tiny-gold" data-t="worldKicker">ΧΩΡΙΣ ΣΥΝΟΡΑ</span><h2 data-t="world">Ο κόσμος μας</h2></div><svg class="ico head-icon"><use href="#i-world"/></svg></div>
+      <div class="world-panel"><div class="mini-globe"><svg class="ico"><use href="#i-world"/></svg></div><h3 data-t="worldTitle">Αγορές για κάθε χώρα</h3><p data-t="worldText">Προς το παρόν παρουσιάζουμε το σχέδιο. Οι διεθνείς αποστολές θα ενεργοποιηθούν μόνο με επιβεβαιωμένους προμηθευτές.</p><label for="country" data-t="countryLabel">Χώρα παράδοσης</label><select id="country"><option value="GR">Ελλάδα</option><option value="US">United States</option><option value="DE">Deutschland</option><option value="FR">France</option><option value="GB">United Kingdom</option><option value="IT">Italia</option><option value="ES">España</option><option value="PT">Portugal</option><option value="NL">Nederland</option><option value="JP">日本</option><option value="AE">الإمارات</option></select><p class="country-note" data-t="countryNote">Δεν έχουν ακόμη συνδεθεί μεταφορικά ή δυνατότητα παραγγελίας.</p></div>
+    </section>
+    <section class="view panel-view" id="view-cart" aria-label="Καλάθι" hidden>
+      <div class="panel-head"><div><span class="tiny-gold" data-t="cartKicker">Η ΕΠΙΛΟΓΗ ΣΟΥ</span><h2 data-t="cart">Καλάθι</h2></div><span class="count-label" id="cart-page-count">0</span></div><div id="cart-items" class="cart-items"></div><div class="cart-footer"><div><span data-t="total">Σύνολο</span><strong id="cart-total">0,00 €</strong></div><button type="button" disabled class="checkout" data-t="checkout">Η πληρωμή δεν είναι διαθέσιμη</button></div>
+    </section>
   </main>
-  <footer class="site-footer"><div class="shell footer-layout"><div class="brand footer-brand"><span class="brand-emblem" aria-hidden="true">◎</span><span class="brand-copy"><strong>GMP<span> STORE</span></strong><small>GLOBAL MARKET PLACE</small></span></div><p data-i18n="footerBody">Μια ιδέα που γίνεται πραγματικότητα. Πρώτη δοκιμαστική έκδοση.</p><p class="copyright">© 2026 GMP Store · <span data-i18n="footerDemo">Προεπισκόπηση — όχι ενεργό κατάστημα</span></p></div></footer>
-
-  <div class="overlay" id="overlay" hidden></div>
-  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="drawerTitle"><div class="drawer-top"><h2 id="drawerTitle"></h2><button id="drawerClose" class="plain-icon" aria-label="Κλείσιμο"><svg class="ico"><use href="#i-x"/></svg></button></div><div class="drawer-body" id="drawerBody"></div><div class="drawer-bottom" id="drawerBottom"></div></aside>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="svg-icons"><symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7.3"/><path d="m16.3 16.3 5 5"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 8.5c0 5-8.8 11-8.8 11s-8.8-6-8.8-11a5 5 0 0 1 8.8-3.1 5 5 0 0 1 8.8 3.1Z"/></symbol><symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2 3h2l2.6 12.2h12.3L22 7H5"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol><symbol id="i-sparkle" viewBox="0 0 24 24"><path d="m12 2 2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2Z"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4.5" ry="9"/><path d="M3 12h18M5.1 6.5h13.8M5.1 17.5h13.8"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 20 6v6c0 5.3-3.5 8.6-8 10-4.5-1.4-8-4.7-8-10V6l8-4Z"/><path d="m8 12 3 3 5-5"/></symbol><symbol id="i-gem" viewBox="0 0 24 24"><path d="m7 3-5 7 10 12L22 10l-5-7H7ZM2 10h20M7 3l5 7 5-7"/></symbol><symbol id="i-package" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7l9-5ZM3 7l9 5 9-5M12 12v10"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="12" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol><symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol></svg>
+  <nav class="bottom-nav" aria-label="Βασική πλοήγηση">
+    <button type="button" data-view="home" class="active"><svg class="ico"><use href="#i-home"/></svg><span data-t="home">Αρχική</span></button>
+    <button type="button" data-view="products"><svg class="ico"><use href="#i-grid"/></svg><span data-t="products">Προϊόντα</span></button>
+    <button type="button" data-view="assistant"><svg class="ico"><use href="#i-sparkle"/></svg><span data-t="assistantShort">Βοηθός</span></button>
+    <button type="button" data-view="world"><svg class="ico"><use href="#i-world"/></svg><span data-t="worldShort">Χώρες</span></button>
+    <button type="button" data-view="cart"><svg class="ico"><use href="#i-cart"/></svg><span data-t="cart">Καλάθι</span><span id="cart-badge" class="nav-counter" hidden>0</span></button>
+  </nav>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div class="dialog-backdrop" id="dialog-backdrop" hidden><div class="product-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title"><button type="button" id="dialog-close" class="dialog-close" aria-label="Κλείσιμο">×</button><div id="dialog-content"></div></div></div>
+</div>
 </body>
 </html>
