@@ -148,7 +148,7 @@
   async function init(){
     events();
     try{
-      const response=await fetch('data/products.json?v=5',{cache:'no-store'});
+      const response=await fetch('data/products.json?v=6',{cache:'no-store'});
       if(!response.ok)throw new Error('Catalog HTTP '+response.status);
       const records=await response.json();
       state.products=Array.isArray(records)?records.filter(publicProduct):[];

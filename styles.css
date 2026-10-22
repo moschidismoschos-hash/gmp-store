@@ -158,3 +158,65 @@ main{background:#07121b;}
 .category-all-grid{height:min(52dvh,310px)}}
 @media(max-height:540px){.category-all-grid{height:min(57dvh,260px)}.category-dialog{gap:8px;padding:9px}.category-tile-all .category-glyph{width:24px;height:24px}}
 @media(prefers-reduced-motion:reduce){.category-tile,.category-glyph{animation:none!important;transition:none!important}}
+
+
+/* GMP Store · edition 6 · pronounced premium mobile layout
+   No stock images, no page scroll, no changes to product ownership. */
+.home-view{background:#07131e}
+.hero{flex:0 0 41%;background:radial-gradient(ellipse at 93% 47%,#234254 0%,#081925 51%,#06111c 100%);border-bottom:1px solid #c99d4a66}
+.hero::before{content:"";position:absolute;z-index:0;inset:0;pointer-events:none;background:
+ radial-gradient(circle at 86% 46%,#edbf6820 0%,transparent 44%),
+ linear-gradient(100deg,#06111df7 2%,#07131eaf 53%,#07131e08 100%)}
+.hero-globe{opacity:.89;right:-9%;width:80%;height:122%;bottom:-15%;filter:contrast(1.05) saturate(1.08)}
+.hero-fade{background:linear-gradient(90deg,#07121be3,#07121b70 63%,#07121b0a)}
+.hero-content{max-width:600px;padding:clamp(13px,2.5vh,25px) clamp(16px,5vw,32px)}
+.hero h1{font-size:clamp(27px,6.2vw,49px);letter-spacing:-.06em;text-shadow:0 3px 18px #0004}
+.hero .gold-button{border:1px solid #ffdf9c;background:linear-gradient(135deg,#ffdb86,#dfaa4d);box-shadow:0 5px 22px #dfab5338;border-radius:13px}
+.hero-stamp{border:1px solid #f4c77980;border-radius:15px;padding:5px 10px;background:#071927c9}
+.home-lower{background:linear-gradient(180deg,#0b1e2d 0%,#071520 100%);color:#eaf1f4;
+ gap:clamp(7px,1.12vh,13px);padding:clamp(9px,1.4vh,16px) clamp(14px,4vw,30px) clamp(8px,1.5vh,15px)}
+.home-lower .section-title h2{color:#fff4dd;font-weight:770;letter-spacing:-.04em}
+.home-lower .tiny-gold{color:#e4c18b;letter-spacing:.11em}
+.owner-display{flex:0 0 auto;min-height:0;height:clamp(62px,10.4vh,94px);border:1px solid #b9904f85;
+ border-radius:16px;background:linear-gradient(105deg,#152c39,#0c1e2c 88%);box-shadow:0 12px 26px #02070b26,inset 0 1px 0 #f5d28c18;
+ padding:clamp(8px,1.3vh,13px) clamp(9px,2.4vw,15px)}
+.owner-seal{border-color:#e3b75e70;background:radial-gradient(circle at 20% 20%,#f0bc5c2c,#102330);color:#f1c46c}
+.owner-enter{border-radius:11px;background:linear-gradient(140deg,#ffda87,#c99542);color:#102433}
+.owner-copy strong{color:#f9e8c9}
+.owner-copy p{color:#c2ced4}
+.owner-counter{background:#122838;color:#f4ce80;border-color:#b58f526b}
+.category-preview{flex:1;min-height:0;gap:clamp(6px,.85vh,12px)}
+.category-title{flex:0 0 auto}
+.category-title .tiny-gold{color:#f0d39b;font-weight:850;font-size:clamp(11px,2.75vw,14px)}
+.category-title .text-link{font-weight:800;color:#f1c778}
+.category-mosaic{gap:clamp(7px,1.2vh,12px)}
+.category-tile{position:relative;border:1px solid #566776;border-radius:15px;
+ background:linear-gradient(145deg,#1b3545 0%,#0e2330 76%,#0a1d2a 100%);
+ box-shadow:0 7px 17px #0003,inset 0 1px 0 #ffdfad15;
+ padding:clamp(5px,1vh,10px) 3px;gap:clamp(4px,.85vh,8px)}
+.category-tile::before{background:radial-gradient(circle at 50% 10%,#f0bc6330,transparent 68%)}
+.category-glyph{width:clamp(30px,4.7vh,48px);height:clamp(30px,4.7vh,48px);border:1px solid #edc47675;
+ border-radius:12px;background:linear-gradient(145deg,#edbd6842,#dda64713);box-shadow:0 3px 12px #0003,inset 0 1px 0 #fcebc02a}
+.category-tile .category-glyph .ico{width:clamp(19px,2.7vh,28px);height:clamp(19px,2.7vh,28px);stroke-width:1.8;color:#ffd48b}
+.category-tile .category-label{font-size:clamp(10px,2.6vw,14px);font-weight:720;line-height:1.13;color:#f7f4ed}
+.trust-strip{color:#cbd4d7}
+.trust-strip .ico{color:#e2b760}
+.category-all-grid .category-tile{border-color:#64727a}
+@media(min-width:780px){.hero{flex:0 0 49%;height:100%}.hero h1{font-size:clamp(38px,4.5vw,70px)}
+ .home-lower{gap:clamp(12px,2vh,20px);padding:clamp(16px,2vh,35px)}
+ .owner-display{height:clamp(80px,14vh,110px)}.category-glyph{width:50px;height:50px}.category-tile .category-glyph .ico{width:27px;height:27px}}
+@media(max-height:710px){.hero{flex-basis:38%}.home-lower{gap:5px;padding-block:7px}
+ .owner-display{height:clamp(47px,9.4vh,65px);padding:5px 8px}
+ .category-preview{gap:4px}.category-mosaic{gap:5px}
+ .category-tile{gap:2px;padding:2px;border-radius:10px}
+ .category-glyph{width:clamp(22px,4.3vh,31px);height:clamp(22px,4.3vh,31px);border-radius:8px}
+ .category-tile .category-glyph .ico{width:clamp(15px,3vh,20px);height:clamp(15px,3vh,20px)}
+ .category-tile .category-label{font-size:clamp(8px,2.2vw,11px)}}
+@media(max-height:590px){.hero{flex-basis:36%}.owner-display{height:42px}
+ .owner-copy p{display:none}.owner-seal{width:28px;height:28px}.owner-seal .ico{width:16px;height:16px}
+ .owner-enter{width:25px;height:25px}.category-title .tiny-gold{font-size:10px}
+ .category-glyph{width:23px;height:23px}.category-tile .category-glyph .ico{width:16px;height:16px}}
+@media(prefers-reduced-motion:reduce){.hero-globe{animation:none!important}}
+
+/* v6 final mobile readability calibration */
+@media(max-width:779px) and (min-height:711px){.hero{flex-basis:39%}.owner-display{height:clamp(64px,8.5vh,78px);padding:6px 10px}.category-tile{padding:3px 2px;gap:3px}.category-glyph{width:clamp(29px,4vh,40px);height:clamp(29px,4vh,40px)}.category-tile .category-glyph .ico{width:clamp(19px,2.5vh,24px);height:clamp(19px,2.5vh,24px)}.category-tile .category-label{font-size:clamp(10px,2.5vw,12px);line-height:1.16}}
