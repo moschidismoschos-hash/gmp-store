@@ -4,12 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#07121b">
+  <meta name="color-scheme" content="dark light">
   <meta name="description" content="GMP Store — διεθνές ηλεκτρονικό κατάστημα υπό κατασκευή.">
   <title>GMP Store | Παγκόσμιες αγορές</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  <script src="translations.js" defer></script>
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=4">
+  <script src="translations.js?v=4" defer></script>
+  <script src="app.js?v=4" defer></script>
 </head>
 <body>
 <svg aria-hidden="true" class="svg-defs" xmlns="http://www.w3.org/2000/svg">
@@ -63,8 +64,19 @@
         <span class="hero-stamp"><svg class="ico"><use href="#i-world"/></svg><span data-t="globalVision">Παγκόσμια προοπτική</span></span>
       </div>
       <div class="home-lower">
-        <div class="section-title"><div><span class="tiny-gold" data-t="discover">ΑΝΑΚΑΛΥΨΕ</span><h2 data-t="browseCategories">Κατηγορίες</h2></div><button type="button" class="text-link" data-view="products"><span data-t="seeAll">Δες όλες</span><svg class="ico"><use href="#i-arrow"/></svg></button></div>
-        <div class="category-mosaic" id="home-categories"></div>
+        <div class="section-title owner-heading">
+          <div><span class="tiny-gold" data-t="catalogKicker">Ο ΚΑΤΑΛΟΓΟΣ ΜΑΣ</span><h2 data-t="products">Προϊόντα</h2></div>
+          <div class="owner-counter"><span class="owner-counter-dot"></span><strong id="home-product-count">0</strong><span data-t="products">Προϊόντα</span></div>
+        </div>
+        <div class="owner-display" role="status" aria-live="polite">
+          <div class="owner-seal"><svg class="ico"><use href="#i-box"/></svg></div>
+          <div class="owner-copy"><strong id="home-status-title" data-t="emptyTitle">Ο κατάλογος είναι ακόμη άδειος</strong><p id="home-status-text" data-t="emptyText">Εδώ θα εμφανίζονται μόνο τα προϊόντα που θα δημοσιεύσεις εσύ.</p></div>
+          <button type="button" class="owner-enter" data-view="products" aria-label="Προϊόντα"><svg class="ico"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="category-preview">
+          <div class="category-title"><span class="tiny-gold" data-t="browseCategories">Κατηγορίες</span><button type="button" class="text-link" data-view="products"><span data-t="seeAll">Δες όλες</span><svg class="ico"><use href="#i-arrow"/></svg></button></div>
+          <div class="category-mosaic" id="home-categories"></div>
+        </div>
         <div class="trust-strip"><span><svg class="ico"><use href="#i-shield"/></svg><span data-t="controlled">Μόνο επιλεγμένα προϊόντα</span></span><span><svg class="ico"><use href="#i-box"/></svg><span data-t="direct">Χωρίς δική μας αποθήκη</span></span></div>
       </div>
     </section>

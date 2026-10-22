@@ -43,7 +43,14 @@
     renderHome();renderCategoryOptions();renderProducts();renderCart();renderBadge();
   }
   function setLanguage(lang){if(!supported.includes(lang))return;state.language=lang;save('language',lang);translate();}
-  function renderHome(){qs('home-categories').innerHTML=homeCategories.map(c=>`<button type="button" class="category-tile" data-category="${c}"><img src="assets/categories/${c}.webp" alt="" loading="eager"><span>${escapeText(catTitle(c))}</span></button>`).join('');}
+  function renderHome(){
+    const icons={home:'home',technology:'sparkle',fashion:'heart',beauty:'shield',tools:'box',pets:'heart'};
+    qs('home-categories').innerHTML=homeCategories.map(c=>`<button type="button" class="category-tile" data-category="${c}">${icon(icons[c]||'grid')}<span>${escapeText(catTitle(c))}</span></button>`).join('');
+    const count=state.products.length;
+    qs('home-product-count').textContent=String(count);
+    qs('home-status-title').textContent=t(count?'catalogReady':'emptyTitle');
+    qs('home-status-text').textContent=t(count?'catalogReadyText':'emptyText');
+  }
   function renderCategoryOptions(){const s=qs('category');s.innerHTML=`<option value="all">${escapeText(t('all'))}</option>`+categories.map(c=>`<option value="${c}">${escapeText(catTitle(c))}</option>`).join('');s.value=state.category;}
   function changeView(v){
     if(!['home','products','assistant','world','cart'].includes(v))return;
@@ -112,7 +119,7 @@
   async function init(){
     events();
     try{
-      const response=await fetch('data/products.json',{cache:'no-store'});
+      const response=await fetch('data/products.json?v=4',{cache:'no-store'});
       if(!response.ok)throw new Error('Catalog HTTP '+response.status);
       const records=await response.json();
       state.products=Array.isArray(records)?records.filter(publicProduct):[];
