@@ -110,3 +110,51 @@ main{background:#07121b;}
   .brand-mark::after,.status-led,.hero::after,.hero-globe,.hero-content>.eyebrow,.hero-content>h1,.hero-content>p,.hero-content>.gold-button,.view.active{animation:none!important}
   *,*::before,*::after{transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
+
+/* GMP Store 5 — Editorial category system: uniform line-work, no stock product pictures. */
+.category-mosaic{gap:clamp(5px,1.15vh,10px)}
+.category-tile{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(2px,.55vh,6px);padding:clamp(3px,.55vh,8px) 2px;
+  color:#f7eee2;border:1px solid #405462;border-radius:clamp(9px,2.7vw,14px);
+  background:linear-gradient(152deg,#1b3444,#0a1b29 88%);
+  box-shadow:inset 0 1px 0 #ffffff0b,0 5px 16px #00000021;
+  isolation:isolate;
+}
+.category-tile::after{display:none!important}
+.category-tile::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle at 50% -22%,#edbe6420,transparent 60%)}
+.category-glyph{
+  display:grid;place-items:center;width:clamp(23px,5vw,35px);height:clamp(23px,5vw,35px);
+  flex:0 0 auto;border-radius:clamp(7px,1.8vw,11px);
+  border:1px solid #e6ba6240;background:linear-gradient(140deg,#f5d38d20,#d8a45208);
+}
+.category-tile .category-glyph .ico{width:clamp(15px,3.9vw,22px);height:clamp(15px,3.9vw,22px);color:#f4cb82;
+  fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.category-tile .category-label{position:static;display:block;font-size:clamp(9px,2.35vw,12px);
+  text-align:center;line-height:1.15;color:#f3f3ef;font-weight:680;text-shadow:none;
+  overflow:hidden;text-overflow:ellipsis;white-space:normal;max-width:100%}
+.category-tile:hover,.category-tile:focus-visible{border-color:#e3b765;background:linear-gradient(150deg,#284657,#132a38)}
+.category-tile:hover .category-glyph{border-color:#e8bc69a0}
+.category-overlay{position:fixed;z-index:40;inset:0;background:#030811c9;backdrop-filter:blur(8px);
+  display:grid;place-items:center;padding:clamp(8px,3vw,22px)}
+.category-overlay[hidden]{display:none}
+.category-dialog{width:min(540px,100%);max-height:calc(100dvh - 30px);padding:clamp(12px,3vw,22px);
+  border:1px solid #d5a75a7d;border-radius:21px;background:linear-gradient(158deg,#142b39,#07131f);
+  box-shadow:0 24px 70px #0009;display:flex;flex-direction:column;gap:clamp(11px,2vh,18px)}
+.category-dialog-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.category-dialog-head h2{font-size:clamp(20px,5vw,27px);margin:3px 0 0;color:#f6e9d1;line-height:1.1}
+.category-dialog-kicker{font-size:10px;letter-spacing:.22em;font-weight:850;color:#dabb81}
+.category-close{background:#1b3240;border:1px solid #4e6270;color:#f0d6a1;border-radius:10px;width:37px;height:37px;font-size:24px}
+.category-all-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));
+ gap:clamp(7px,1.5vh,13px);height:min(53dvh,370px);min-height:0}
+.category-tile-all .category-glyph{width:clamp(28px,8vw,47px);height:clamp(28px,8vw,47px);border-radius:12px}
+.category-tile-all .category-glyph .ico{width:clamp(18px,5vw,28px);height:clamp(18px,5vw,28px)}
+.category-tile-all .category-label{font-size:clamp(10px,2.75vw,14px)}
+@media(min-width:780px){.category-tile{flex-direction:column;gap:8px}.category-glyph{width:44px;height:44px}
+.category-tile .category-glyph .ico{width:25px;height:25px}.category-tile .category-label{font-size:clamp(12px,1.1vw,16px)}}
+@media(max-height:710px){.category-tile{padding:2px;gap:1px}.category-glyph{width:clamp(19px,4.4vw,27px);height:clamp(19px,4.4vw,27px)}
+.category-tile .category-glyph .ico{width:clamp(13px,3.5vw,19px);height:clamp(13px,3.5vw,19px)}.category-tile .category-label{font-size:clamp(8px,2.25vw,11px)}
+.category-all-grid{height:min(52dvh,310px)}}
+@media(max-height:540px){.category-all-grid{height:min(57dvh,260px)}.category-dialog{gap:8px;padding:9px}.category-tile-all .category-glyph{width:24px;height:24px}}
+@media(prefers-reduced-motion:reduce){.category-tile,.category-glyph{animation:none!important;transition:none!important}}

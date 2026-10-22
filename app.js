@@ -40,12 +40,30 @@
     qs('favorites').setAttribute('aria-label',t('favorites'));
     qs('assistant-reply').textContent=t('assistantWelcome');
     qs('country').value=state.country;
-    renderHome();renderCategoryOptions();renderProducts();renderCart();renderBadge();
+    qs('category-close').setAttribute('aria-label',t('close'));
+    renderHome();renderAllCategories();renderCategoryOptions();renderProducts();renderCart();renderBadge();
   }
   function setLanguage(lang){if(!supported.includes(lang))return;state.language=lang;save('language',lang);translate();}
+  const categoryIcons={home:'cat-house',technology:'cat-tech',fashion:'cat-fashion',beauty:'cat-beauty',tools:'cat-tools',kids:'cat-kids',fitness:'cat-fitness',auto:'cat-auto',pets:'cat-pets'};
+  function categoryButton(c,extraClass=''){
+    return `<button type="button" class="category-tile ${extraClass}" data-category="${c}"><span class="category-glyph">${icon(categoryIcons[c])}</span><span class="category-label">${escapeText(catTitle(c))}</span></button>`;
+  }
+  function renderAllCategories(){
+    qs('category-all-grid').innerHTML=categories.map(c=>categoryButton(c,'category-tile-all')).join('');
+  }
+  let priorCategoryFocus=null;
+  function openAllCategories(){
+    priorCategoryFocus=document.activeElement;
+    qs('category-overlay').hidden=false;
+    qs('category-close').focus();
+  }
+  function closeAllCategories(){
+    const wasOpen=!qs('category-overlay').hidden;
+    qs('category-overlay').hidden=true;
+    if(wasOpen && priorCategoryFocus?.isConnected)priorCategoryFocus.focus();
+  }
   function renderHome(){
-    const icons={home:'home',technology:'sparkle',fashion:'heart',beauty:'shield',tools:'box',pets:'heart'};
-    qs('home-categories').innerHTML=homeCategories.map(c=>`<button type="button" class="category-tile" data-category="${c}">${icon(icons[c]||'grid')}<span>${escapeText(catTitle(c))}</span></button>`).join('');
+    qs('home-categories').innerHTML=homeCategories.map(c=>categoryButton(c)).join('');
     const count=state.products.length;
     qs('home-product-count').textContent=String(count);
     qs('home-status-title').textContent=t(count?'catalogReady':'emptyTitle');
@@ -96,8 +114,9 @@
   function searchAssistant(q){qs('assistant-reply').textContent=state.products.length===0?t('assistantNoProducts'):(state.products.some(p=>Object.values(p.name).some(n=>n.toLocaleLowerCase().includes(q.toLocaleLowerCase())))?t('assistantFound'):t('assistantNoMatch'));}
   function events(){
     document.addEventListener('click',e=>{
+      if(e.target.closest('[data-all-categories]')){openAllCategories();return;}
       const v=e.target.closest('[data-view]');if(v){if(v.dataset.view==='products')state.favoritesOnly=false;changeView(v.dataset.view);return;}
-      const c=e.target.closest('[data-category]');if(c){state.category=c.dataset.category;state.page=0;state.favoritesOnly=false;renderCategoryOptions();changeView('products');return;}
+      const c=e.target.closest('[data-category]');if(c){closeAllCategories();state.category=c.dataset.category;state.page=0;state.favoritesOnly=false;renderCategoryOptions();changeView('products');return;}
       const a=e.target.closest('[data-add]');if(a){add(a.dataset.add);return;}
       const like=e.target.closest('[data-like]');if(like){toggleLike(like.dataset.like);return;}
       const d=e.target.closest('[data-detail]');if(d){showDetails(d.dataset.detail);return;}
@@ -112,14 +131,24 @@
     qs('favorites').addEventListener('click',()=>{state.favoritesOnly=!state.favoritesOnly;state.page=0;changeView('products');});
     qs('search-form').addEventListener('submit',e=>{e.preventDefault();state.q=qs('query').value;state.favoritesOnly=false;state.page=0;changeView('products');});
     qs('assistant-form').addEventListener('submit',e=>{e.preventDefault();searchAssistant(qs('assistant-query').value.trim());});
+    qs('category-close').addEventListener('click',closeAllCategories);
+    qs('category-overlay').addEventListener('click',e=>{if(e.target===qs('category-overlay'))closeAllCategories();});
     qs('dialog-close').addEventListener('click',closeDialog);
     qs('dialog-backdrop').addEventListener('click',e=>{if(e.target===qs('dialog-backdrop'))closeDialog();});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDialog();});
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape'){closeAllCategories();closeDialog();}
+      if(e.key==='Tab'&&!qs('category-overlay').hidden){
+        const buttons=[...qs('category-overlay').querySelectorAll('button:not([disabled])')];
+        const first=buttons[0],last=buttons[buttons.length-1];
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+      }
+    });
   }
   async function init(){
     events();
     try{
-      const response=await fetch('data/products.json?v=4',{cache:'no-store'});
+      const response=await fetch('data/products.json?v=5',{cache:'no-store'});
       if(!response.ok)throw new Error('Catalog HTTP '+response.status);
       const records=await response.json();
       state.products=Array.isArray(records)?records.filter(publicProduct):[];

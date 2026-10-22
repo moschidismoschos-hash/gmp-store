@@ -31,10 +31,10 @@ fi
 gh auth setup-git
 git add -A
 if ! git diff --cached --quiet; then
-  git commit -m 'GMP Store v4: premium microinteractions, no-scroll, owner catalog'
+  git commit -m 'GMP Store v5: professional category icons and full category panel'
 else
   printf '%s\n' 'Δεν υπάρχουν τοπικές αλλαγές.'
 fi
 git push -u origin main
-printf '\n%s\n' 'Η έκδοση 4 ανέβηκε. Άνοιξε την ενημερωμένη διεύθυνση:'
-printf '%s\n' 'https://moschidismoschos-hash.github.io/gmp-store/?v=4'
+printf '\n%s\n' 'Η έκδοση 5 ανέβηκε. Άνοιξε την ενημερωμένη διεύθυνση:'
+printf '%s\n' 'https://moschidismoschos-hash.github.io/gmp-store/?v=5'
